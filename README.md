@@ -41,7 +41,7 @@ You can create an instance and call the `sort` method.
 import { bubbleSort, quickSort } from '@fsad-labs/sortzilla';
 
 const result = bubbleSort({ array: [5, 3, 8, 1] });
-console.log(result); // [1, 3, 5, 8]
+console.log([...result]); // [1, 3, 5, 8]
 
 // Reuse helper functions
 console.log(result.byDesc()); // [8, 5, 3, 1]
@@ -58,7 +58,7 @@ const result = selectionSort({
   ascending: false,
 });
 
-console.log(result); // ["z", "d", "b", "a"]
+console.log([...result]); // ["z", "d", "b", "a"]
 ```
 
 ### Example with Objects
@@ -78,7 +78,7 @@ const result = mergeSort({
   ascending: true,
 });
 
-console.log(result);
+console.log([...result]);
 // [{ id: 1, name: "Bob" }, { id: 2, name: "Charlie" }, { id: 3, name: "Alice" }]
 ```
 
@@ -139,7 +139,7 @@ interface IOrderSort<T> {
 import { insertionSort } from '@fsad-labs/sortzilla';
 const result = insertionSort({ array: [4, 2, 7, 1] });
 
-console.log(result); // [1, 2, 4, 7]
+console.log([...result]); // [1, 2, 4, 7]
 console.log(result.byDesc()); // [7, 4, 2, 1]
 ```
 
