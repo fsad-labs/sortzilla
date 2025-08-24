@@ -5,7 +5,7 @@ import { getFieldValue } from '../utils/getter';
 import { validateArray } from '../utils/validation';
 import { OrderBy } from './orderBy/orderBy';
 
-export class QuickSort<T extends string | number | object>
+export default class QuickSort<T extends string | number | object>
   implements ISortAlgorithm<T>
 {
   private ascending: boolean;
@@ -19,7 +19,10 @@ export class QuickSort<T extends string | number | object>
     this.ascending = ascending;
     this.ipivotStart = ipivot;
   }
-  sort(array: T[], field?: keyof T): T[] & IOrderSort<T> {
+  sort(
+    array: T[],
+    field?: T extends object ? keyof T : undefined,
+  ): T[] & IOrderSort<T> {
     if (array.length <= 1) {
       return Object.assign(array, { ...OrderBy(array, field) });
     }

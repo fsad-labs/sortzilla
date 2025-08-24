@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { HeapSort } from '../src/sorts/HeapSort';
+import HeapSort from '../src/sorts/HeapSort';
 
 type MockObjectType = {
   name: string;

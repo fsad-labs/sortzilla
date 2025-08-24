@@ -5,7 +5,7 @@ import { getCurrentValue } from '../utils/getter';
 import { validateArray } from '../utils/validation';
 import { OrderBy } from './orderBy/orderBy';
 
-export class InsertionSort<T extends string | number | object>
+export default class InsertionSort<T extends string | number | object>
   implements ISortAlgorithm<T>
 {
   private ascending: boolean;
@@ -14,7 +14,10 @@ export class InsertionSort<T extends string | number | object>
     this.ascending = ascending;
   }
 
-  sort(array: T[], field?: keyof T): T[] & IOrderSort<T> {
+  sort(
+    array: T[],
+    field?: T extends object ? keyof T : undefined,
+  ): T[] & IOrderSort<T> {
     const result = validateArray(array, field);
 
     if (result.length === 0) {

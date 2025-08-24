@@ -1,15 +1,12 @@
-export function getFieldValueByIndex<T, K extends keyof T>(
+export function getFieldValueByIndex<T>(
   array: T[],
   index: number,
-  field: K,
-): T[K] {
+  field: keyof T,
+): T[keyof T] {
   return array[index][field];
 }
 
-export function getFieldValue<T, K extends keyof T>(
-  element: T,
-  field: K,
-): T[K] {
+export function getFieldValue<T>(element: T, field: keyof T): T[keyof T] {
   return element[field];
 }
 

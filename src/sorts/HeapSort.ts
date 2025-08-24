@@ -5,7 +5,7 @@ import { getCurrentValue } from '../utils/getter';
 import { validateArray } from '../utils/validation';
 import { OrderBy } from './orderBy/orderBy';
 
-export class HeapSort<T extends string | number | object>
+export default class HeapSort<T extends string | number | object>
   implements ISortAlgorithm<T>
 {
   private ascending: boolean;
@@ -14,7 +14,10 @@ export class HeapSort<T extends string | number | object>
     this.ascending = ascending;
   }
   //implementation of the sort method
-  sort(array: T[], field?: keyof T): T[] & IOrderSort<T> {
+  sort(
+    array: T[],
+    field?: T extends object ? keyof T : undefined,
+  ): T[] & IOrderSort<T> {
     const result = validateArray(array, field);
 
     const n = result.length;

@@ -1,9 +1,10 @@
 {
   "name": "sortzilla",
+  "author": "@drixev",
   "version": "0.6.0",
   "description": "Sorts Algorithms in your hand",
   "readme": "README.npm.md",
-  "funding": "https://buymeacoffee.com/fullstack.ad",
+  "funding": "https://buymeacoffee.com/drixev",
   "scripts": {
     "build": "tsup --clean",
     "dev": "tsup ./index.ts --watch",
@@ -44,11 +45,11 @@
     }
   },
   "type": "module",
-  "author": "@fullstack-ad",
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@types/node": "^24.3.0",
+    "@vitest/coverage-v8": "^3.2.4",
     "benchmark": "^2.1.4",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",

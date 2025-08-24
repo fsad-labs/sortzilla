@@ -5,7 +5,7 @@ import { OrderBy } from './orderBy/orderBy';
 import { getFieldValue } from '../utils/getter';
 import { SortProp } from '../typeProps';
 
-export class BubbleSort<T extends string | number | object>
+export default class BubbleSort<T extends string | number | object>
   implements ISortAlgorithm<T>
 {
   private ascending: boolean;
@@ -15,7 +15,10 @@ export class BubbleSort<T extends string | number | object>
   }
   //implementation of the sort method
 
-  sort(array: T[], field?: keyof T): T[] & IOrderSort<T> {
+  sort(
+    array: T[],
+    field?: T extends object ? keyof T : undefined,
+  ): T[] & IOrderSort<T> {
     const result = validateArray(array, field);
 
     if (result.length === 0) {

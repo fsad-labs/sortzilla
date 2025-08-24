@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { InsertionSort } from '../src/sorts/InsertionSort';
+import InsertionSort from '../src/sorts/InsertionSort';
 
 type MockObjectType = {
   id: number;
