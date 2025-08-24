@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { QuickSort } from '../src/sorts/QuickSort';
+import QuickSort from '../src/sorts/QuickSort';
 
 type MockObjectType = {
   id: number;

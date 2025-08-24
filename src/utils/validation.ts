@@ -7,14 +7,6 @@ export function validateArray<T>(input: T[], field?: keyof T): T[] {
     return [];
   }
 
-  if (!Array.isArray(input)) {
-    throw new Error('Input must be an array.');
-  }
-
-  if (!field && input.some((item) => typeof item !== 'number')) {
-    throw new Error('Input must be an array of number.');
-  }
-
   if (typeof field !== 'string') {
     throw new Error('Field must be a string.');
   }

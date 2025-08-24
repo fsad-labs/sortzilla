@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CountingSort } from '../src/sorts/CountingSort';
+import CountingSort from '../src/sorts/CountingSort';
 
 type MockObjectType = {
   name: string;
@@ -16,6 +16,11 @@ describe('Counting Sort', () => {
 
   const stringArray = ['banana', 'cherry', 'apple', 'date'];
   const arrayToBeSorted = [5, 3, 8, 4];
+  const booleanArray = [true, false, true];
+  const objectBooleanArray = [
+    { name: 'and', status: true },
+    { name: 'or', status: false },
+  ];
 
   describe('Sort by default', () => {
     it('Should sort the array number', () => {
@@ -48,6 +53,33 @@ describe('Counting Sort', () => {
         { name: 'date', value: 4 },
       ];
       expect(result).toEqual(expected);
+    });
+
+    it('Should not sort the array boolean and must throw error', () => {
+      const countingSort = new CountingSort();
+
+      const fn = () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-expect-error
+        countingSort.sort(booleanArray);
+      };
+
+      expect(fn).toThrow(
+        'CountingSort only supports arrays of numbers or strings',
+      );
+    });
+
+    it('Should not sort the array boolean and must throw error using field', () => {
+      const countingSort = new CountingSort<{
+        name: string;
+        status: boolean;
+      }>();
+
+      const fn = () => {
+        countingSort.sort(objectBooleanArray, 'status');
+      };
+
+      expect(fn).toThrow('CountingSort only supports number or string fields');
     });
 
     it('Should sort the object by number', () => {

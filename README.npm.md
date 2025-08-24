@@ -1,7 +1,7 @@
 # @fsad-labs/sortzilla
 
 <DESCRIPTION>  
-A TypeScript/JavaScript library that provides classic **sorting algorithms** with a simple and object-oriented API.
+A TypeScript/JavaScript library that provides classic **sorting algorithms** with a simple and function-oriented API.
 
 ---
 
@@ -16,12 +16,11 @@ npm install @fsad-labs/sortzilla
 ## Usage
 
 ```ts
-import { BubbleSort, QuickSort } from "@fsad-labs/sortzilla";
+import { bubbleSort, quickSort } from '@fsad-labs/sortzilla';
 
-const bubbleSort = new BubbleSort();
-const result = bubbleSort.sort([5, 3, 8, 1]);
+const result = bubbleSort({ array: [5, 3, 8, 1] });
 
-console.log(result);        // [1, 3, 5, 8]
+console.log(result); // [1, 3, 5, 8]
 console.log(result.byDesc()); // [8, 5, 3, 1]
 ```
 
@@ -41,19 +40,31 @@ console.log(result.byDesc()); // [8, 5, 3, 1]
 
 ## API
 
-### Constructor Options
-
-```ts
-type SortProp = { ascending?: boolean };
-```
-
-👉 **QuickSort** also accepts `{ ipivot?: number }`.
-
 ### Method
 
 ```ts
-sort(array: T[], field?: keyof T): T[] & IOrderSort<T>
+function bubbleSort<T extends SortTypes>(props: SortProps<T>);
 ```
+
+### Params Options
+
+### `sort(props: SortProps)`
+
+--props:::
+
+- `array` → input array (`number[] | string[] | object[]`).
+- `field` → (optional) field key if sorting objects.
+- `ascending` _(boolean, default: true)_ → sort order.
+
+**QuickSort** accepts an additional option:
+
+```ts
+type QuickSortProp = SortProps<T> & { ipivot?: number };
+```
+
+- `ipivot` _(number, default: -1)_ → index for pivot selection (-1 = random).
+
+---
 
 Returns a sorted array with:
 
@@ -69,28 +80,29 @@ interface IOrderSort<T> {
 ## Example with Objects
 
 ```ts
-import { MergeSort } from "@fsad-labs/sortzilla";
+import { mergeSort } from '@fsad-labs/sortzilla';
 
-type User = { id: number; name: string };
-
-const mergeSort = new MergeSort();
-const result = mergeSort.sort(
-  [
-    { id: 3, name: "Alice" },
-    { id: 1, name: "Bob" },
-    { id: 2, name: "Charlie" },
+const result = mergeSort({
+  array: [
+    { id: 3, name: 'Alice' },
+    { id: 1, name: 'Bob' },
+    { id: 2, name: 'Charlie' },
   ],
-  "id"
-);
+  field: 'id',
+  ascending: true,
+});
 
 console.log(result);
 // [{ id: 1, name: "Bob" }, { id: 2, name: "Charlie" }, { id: 3, name: "Alice" }]
 ```
 
 ---
-## SPONSOR
 
-If you like this package and want to support its development, you can [Buy Me a Coffee☕.](https://buymeacoffee.com/fullstack.ad)
+## 🤝 Contributing
+
+If my work has helped you or saved you some time, consider [Buy Me a Coffee☕.](https://buymeacoffee.com/drixev)
+It keeps me energized and motivated to keep creating and improving.
 
 ## 📄 License
-This project is licensed under the [MIT License](LICENSE) © [fullstack-ad](https://github.com/fullstack-ad)
+
+This project is licensed under the [MIT License](LICENSE) © [drixev](https://github.com/drixev)

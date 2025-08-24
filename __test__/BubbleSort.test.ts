@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { BubbleSort } from '../src/sorts/BubbleSort';
+import BubbleSort from '../src/sorts/BubbleSort';
 
 type MockObjectType = {
   id: number;
@@ -86,6 +86,20 @@ describe('BubleSort test', () => {
 
       const changeOrder = sorted.byDesc();
       expect(changeOrder).toEqual([8, 5, 3, 1]);
+    });
+
+    it('Should sort number using constructor descending', () => {
+      const bubbleSort = new BubbleSort({ ascending: false });
+      const sorted = bubbleSort.sort([5, 3, 8, 1]);
+      const result = [...sorted];
+      expect(result).toEqual([8, 5, 3, 1]);
+    });
+
+    it('Should sort number using constructor ascending', () => {
+      const bubbleSort = new BubbleSort({ ascending: true });
+      const sorted = bubbleSort.sort([1, 8, 6, 2, 0]);
+      const result = [...sorted];
+      expect(result).toEqual([0, 1, 2, 6, 8]);
     });
   });
 });
