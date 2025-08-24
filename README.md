@@ -159,4 +159,4 @@ It keeps me energized and motivated to keep creating and improving.
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) © [fullstack-ad](https://github.com/fullstack-ad)
+This project is licensed under the [MIT License](LICENSE) © [drixev](https://github.com/drixev)
